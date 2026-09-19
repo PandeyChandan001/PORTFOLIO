@@ -13,6 +13,14 @@ export function WalkoutScreen() {
     if (hasWalkedOut) {
       setShow(false);
     }
+
+    const handleReplay = () => {
+      sessionStorage.removeItem("hasWalkedOut");
+      setShow(true);
+    };
+
+    window.addEventListener("replay-walkout", handleReplay);
+    return () => window.removeEventListener("replay-walkout", handleReplay);
   }, []);
 
   const playCinematicStadiumIntro = () => {
