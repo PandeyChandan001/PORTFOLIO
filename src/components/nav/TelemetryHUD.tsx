@@ -23,12 +23,6 @@ export function TelemetryHUD() {
         <span className="text-foreground">MATCH STATUS: AVAILABLE FOR INTERNSHIPS</span>
       </div>
       
-      <div className="hidden md:flex items-center gap-4 text-center">
-        <span>LOCATION: KANPUR, IN</span>
-        <span className="text-white/20">//</span>
-        <span className="text-[#06B6D4]">RESEARCH: ACTIVE (EVICTION HEURISTICS)</span>
-      </div>
-
       <div className="flex items-center gap-4">
         <div className="font-mono hidden sm:block">{time}</div>
         <button 

@@ -1,11 +1,11 @@
 export const profile = {
   name: "Chandan Pandey",
-  role: "All-Rounder in Java, C++, Python, part-time SQL, AI tools",
+  role: "All-Rounder in Java, C++, part-time Python, SQL, AI tools",
   debut: "Methodist High School, Kanpur",
-  innings: "5th Sem B.Tech CSE (IoT & IS)",
-  status: "AVAILABLE FOR INTERNSHIPS",
-  headline: "Hey, I'm Chandan. I break down systems, build practical web tools, and solve data structures.",
-  bio: "Most days you'll find me analyzing cache eviction behavior in C++, shipping full-stack tools with Next.js & TypeScript, or working through core algorithmic patterns.",
+  homeGround: "Manipal University Jaipur",
+  innings: "B.Tech CSE (IoT & Intelligent Systems) — 5th Semester",
+  status: "🟢 Match-Fit // Available for SDE & AI Internships",
+  bio: "Taking guard at the 22-yard crease of computer science. When the pitch offers green-top seam movement, I bowl tight 140+ km/h spells in C++ and Java—managing raw memory, locking down race conditions, and designing cache eviction heuristics under heavy load. When stepping out to bat, I punch through covers with clean Next.js architectures, Zod-guarded pipelines, and applied AI models. Whether it is grinding out 50+ high-pressure algorithmic spells or reviewing code with Hawk-Eye precision, I play every delivery on merit.",
 };
 
 export const skills = {
@@ -30,7 +30,7 @@ export const cricketCSFundamentals = [
     badgeColor: "text-[#10B981] bg-[#10B981]/10 border-[#10B981]/20",
     hoverBorder: "hover:border-[#10B981]/40",
     points: [
-      "3NF relational normalization, SQL schemas, B-Tree index lookups, and ACID compliance under concurrent updates."
+      "3NF relational normalization, SQL schemas, B-Tree index lookups, and ACID compliance under concurrent score updates."
     ]
   },
   {
@@ -74,34 +74,34 @@ export const cricketAlgorithmicRigor = [
 export const projects = [
   {
     slug: "career-copilot",
-    title: "Career Co-Pilot (Full-Stack + Applied AI)",
-    tag: "Applied AI / Document Intelligence Engine",
+    title: "Career Co-Pilot — Real-Time ATS Intelligence Engine",
+    tag: "Applied AI / Hawk-Eye Document Analyst",
     stack: ["Next.js 15", "TypeScript", "Tailwind CSS", "Zod", "AI SDK / Vector Embeddings"],
-    description: "Built to automate candidate preparation by comparing unstructured PDF resumes against real job descriptions.",
+    description: "An automated preparation platform designed to parse arbitrary PDF resumes and cross-examine them against live job descriptions.",
     points: [
-      "Extracts and parses resume tokens into strict Zod schemas, eliminating LLM formatting errors.",
-      "Hybrid scoring system combining exact skill token matches with contextual semantic embeddings.",
-      "Generates targeted, weekly algorithmic and system-design study plans based on identified skill gaps."
+      "Token extraction mapped to strict Zod schemas to eliminate LLM hallucinations.",
+      "Hybrid scoring system combining deterministic token extraction with contextual vector embeddings.",
+      "Generates targeted, weekly algorithmic and system-design study plans based on identified candidate gaps."
     ],
     links: [
-      { label: "Live App", url: "#" },
-      { label: "GitHub Repo", url: "#" }
+      { label: "View Live Deployment", url: "#" },
+      { label: "Inspect Code on GitHub", url: "#" }
     ]
   },
   {
     slug: "kv-store",
     title: "AetherKV — Key-Value Cache Eviction Research",
     tag: "Low-Level Systems & Concurrency Research",
-    stack: ["C++", "POSIX Threads", "Benchmarking"],
-    description: "Undergrad research analyzing why classical LRU suffers from cache pollution during sudden bursts of one-off queries.",
+    stack: ["C++", "POSIX Threads", "Cache Benchmarking"],
+    description: "Undergraduate research exploring why classical LRU suffers from cache pollution during sudden bursts of one-off queries.",
     points: [
-      "Implements frequency-recency queue heuristics (inspired by SIEVE) to preserve hot entries.",
-      "Thread-safe reads and writes using striped mutexes to minimize lock contention.",
-      "Benchmarked hit-ratio gains across skewed Zipfian access distributions."
+      "Testing dynamic frequency-recency queue heuristics (inspired by SIEVE) against standard LRU.",
+      "Thread-safe read/write operations using striped mutexes to minimize lock contention under parallel access.",
+      "Benchmarking hit-ratio recovery curves across skewed Zipfian access distributions."
     ],
     links: [
-      { label: "Implementation on GitHub", url: "#" },
-      { label: "Lab Notes", url: "#" }
+      { label: "View Implementation on GitHub", url: "#" },
+      { label: "Read Research Notes", url: "#" }
     ]
   }
 ];

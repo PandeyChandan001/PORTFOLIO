@@ -35,6 +35,11 @@ export function HeroBroadcast() {
               </div>
               
               <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[140px_1fr] gap-2 items-start border-b border-white/5 pb-3">
+                <span className="text-muted-foreground uppercase">Home Ground</span>
+                <span className="text-foreground">{profile.homeGround}</span>
+              </div>
+
+              <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[140px_1fr] gap-2 items-start border-b border-white/5 pb-3">
                 <span className="text-muted-foreground uppercase">Curr. Innings</span>
                 <span className="text-foreground">{profile.innings}</span>
               </div>
@@ -46,23 +51,24 @@ export function HeroBroadcast() {
             </div>
           </div>
 
-          <div className="space-y-4 lg:pr-8">
-            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground leading-[1.2] text-balance">
-              {profile.headline}
-            </h1>
-            <p className="text-base text-muted-foreground leading-relaxed text-balance">
-              {profile.bio}
-            </p>
-            <div className="flex flex-wrap items-center gap-4 pt-4">
+          <div className="space-y-6 lg:pr-8">
+            <div className="border-l-4 border-[#10B981] pl-4 italic text-muted-foreground leading-relaxed text-sm">
+              "{profile.bio}"
+            </div>
+            <div className="flex flex-wrap items-center gap-4 pt-2">
               <button 
                 onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
-                className="rounded-md bg-foreground text-background px-6 py-3 text-sm font-semibold transition-transform hover:scale-[1.02] active:scale-95"
+                className="rounded-md bg-foreground text-background px-6 py-3 text-sm font-semibold transition-transform hover:scale-[1.02] active:scale-95 flex items-center gap-2"
               >
-                [ View Flagship Innings ]
+                <span>🏏</span> Inspect Flagship Innings
               </button>
-              <button className="rounded-md border border-white/10 bg-card px-6 py-3 text-sm font-semibold transition-colors hover:bg-muted text-foreground">
-                [ Download Match Record ]
-              </button>
+              <a 
+                href="/resume.pdf"
+                className="rounded-md border border-white/10 bg-card px-6 py-3 text-sm font-semibold transition-colors hover:bg-muted text-foreground flex items-center gap-2"
+                target="_blank"
+              >
+                <span>📄</span> Download Resume (PDF)
+              </a>
             </div>
           </div>
         </div>
