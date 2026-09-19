@@ -268,7 +268,7 @@ export function WalkoutScreen() {
                     onClick={handleTakeGuard}
                     className="bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold text-base tracking-wider py-3.5 px-8 rounded-xl shadow-lg shadow-emerald-500/30 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-3 uppercase w-full sm:w-auto"
                   >
-                    <span>🏏 TAKE GUARD & WALK OUT</span>
+                    <span>🏏 INSPECT THE OFFICIAL CAREER RECORD</span>
                   </button>
                   
                   <button 
