@@ -259,7 +259,7 @@ export function WalkoutScreen() {
 
                 {/* Technical Intro */}
                 <p className="font-sans text-sm md:text-base text-slate-300 font-medium leading-relaxed max-w-xl mb-8">
-                  "Taking guard with disciplined OOP architecture in Java and low-level thread synchronization in C++. Driving full-stack deliveries through typed TypeScript pipelines, backed by Python scripts and vector AI embeddings for Hawk-Eye precision. Grounded in ACID-compliant SQL scorekeeping and reliable network handshakes—playing every technical delivery on merit."
+                  "Software engineer with solid fundamentals across Java, C++, and TypeScript. Built on strong data structures, backend systems, and clean full-stack web apps—treating every problem like a ball to play on merit."
                 </p>
 
                 {/* Action Button */}
