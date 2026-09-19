@@ -188,11 +188,11 @@ export function WalkoutScreen() {
               
               {/* Top-Right: Target Status */}
               <div className="flex flex-col items-end gap-1 select-none pointer-events-none">
-                <div className="bg-white text-black font-black text-xs px-2 py-0.5 uppercase tracking-widest">
-                  TARGET: INTERNSHIP 2027
+                <div className="bg-white text-black font-black text-[10px] sm:text-xs px-2 py-0.5 uppercase tracking-widest">
+                  INTENT: IMPACT & CONTRIBUTION
                 </div>
-                <div className="text-amber-400 font-mono text-[11px] font-bold uppercase tracking-wider">
-                  REQ RUN RATE: HIGH
+                <div className="text-amber-400 font-mono text-[10px] sm:text-[11px] font-bold uppercase tracking-wider">
+                  DRIVE: FOR THE LOVE OF THE GAME
                 </div>
               </div>
             </div>
