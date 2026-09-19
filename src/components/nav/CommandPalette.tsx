@@ -52,12 +52,6 @@ export function CommandPalette() {
                 onClick={() => setIsOpen(false)}
                 className="w-full flex items-center rounded-md px-2 py-2 text-sm text-foreground hover:bg-muted/50 text-left"
               >
-                View Resume
-              </button>
-              <button 
-                onClick={() => setIsOpen(false)}
-                className="w-full flex items-center rounded-md px-2 py-2 text-sm text-foreground hover:bg-muted/50 text-left"
-              >
                 Copy Email Address
               </button>
             </div>

@@ -16,9 +16,6 @@ export function FooterDock() {
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
       }
-      if (key === "r") {
-        window.open("/resume.pdf", "_blank");
-      }
       if (key === "g") {
         window.open("https://github.com", "_blank");
       }
@@ -33,7 +30,6 @@ export function FooterDock() {
 
   const shortcuts = [
     { key: "C", label: copied ? "Copied!" : "Copy Email" },
-    { key: "R", label: "Download Resume (PDF)" },
     { key: "G", label: "GitHub" },
     { key: "L", label: "LeetCode" },
   ];

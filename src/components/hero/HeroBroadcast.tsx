@@ -69,13 +69,6 @@ export function HeroBroadcast() {
               >
                 <span>🏏</span> Inspect Flagship Innings
               </button>
-              <a 
-                href="/resume.pdf"
-                className="rounded-md border border-white/10 bg-card px-6 py-3 text-sm font-semibold transition-colors hover:bg-muted text-foreground flex items-center gap-2"
-                target="_blank"
-              >
-                <span>📄</span> Download Resume (PDF)
-              </a>
             </div>
           </div>
         </div>
