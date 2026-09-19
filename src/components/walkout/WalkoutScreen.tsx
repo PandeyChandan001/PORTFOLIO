@@ -254,7 +254,7 @@ export function WalkoutScreen() {
 
                 {/* Role */}
                 <div className="font-mono text-xs md:text-sm font-semibold tracking-wider text-emerald-300/90 mb-6 uppercase">
-                  All-Rounder in Java, C++, part-time Python, SQL, AI tools
+                  Technical Cricketer • C++ & Java • Practicing DSA & OOP • Core OS, CN, SQL & Applied AI
                 </div>
 
                 {/* Technical Intro */}
