@@ -15,60 +15,72 @@ export const skills = {
   coreCS: ["Data Structures & Algorithms", "Computer Networks (CCNA foundations)", "IoT & Information Security fundamentals"]
 };
 
-export const csFundamentals = [
+export const cricketCSFundamentals = [
   {
-    title: "Computer Networks & Protocols",
-    subheader: "Layer 4–7 Architecture & Transport",
+    title: "Computer Networks: Field Placements & Ball Flight",
+    badge: "LAYER 4–7 TELEMETRY",
+    badgeColor: "text-[#F59E0B] bg-[#F59E0B]/10 border-[#F59E0B]/20",
+    hoverBorder: "hover:border-[#F59E0B]/40",
+    concept: "Reliable communication lines between keeper, slips, and boundary.",
     points: [
-      "TCP/UDP socket lifecycles, 3-way handshake, congestion control, and flow window sizing.",
-      "HTTP/1.1 vs. HTTP/2 multiplexing, WebSocket bidirectional streaming, and DNS resolution paths.",
-      "IP addressing, subnetting, and foundational routing principles."
+      "Handshakes & Transport: TCP 3-way synchronization, flow control, and UDP low-latency spin.",
+      "WebSockets & Streaming: Live ball-by-ball telemetry, HTTP/2 multiplexed commentary feeds, and DNS resolution.",
+      "Subnetting & Network Topologies: Securing the inner ring and perimeter field boundaries."
     ]
   },
   {
-    title: "SQL & Relational Database Internals",
-    subheader: "ACID, Indexing & Query Optimizations",
+    title: "SQL & DBMS: Scorebook & Invariant Ledger",
+    badge: "ACID & SCOREBOOK INTEGRITY",
+    badgeColor: "text-[#10B981] bg-[#10B981]/10 border-[#10B981]/20",
+    hoverBorder: "hover:border-[#10B981]/40",
+    concept: "Flawless record-keeping where no run is dropped and concurrency is strictly locked.",
     points: [
-      "Relational modeling, 3NF schema normalization, and ER diagram design.",
-      "Indexing mechanics: B-Trees vs. Hash indices, explain plans, and avoiding table scans.",
-      "Transaction isolation levels (Read Committed, Repeatable Read, Serializable) and concurrency locks."
+      "Relational Schema Normalization: 3NF scorebook design, player stat modeling, and strict foreign keys.",
+      "Indexing & Execution Plans: B-Tree lookup for strike rates, eliminating full-table scans when querying run chases.",
+      "Transaction Isolation: Handling concurrent score updates without race conditions or dirty reads."
     ]
   },
   {
-    title: "Operating Systems & Runtime Mechanics",
-    subheader: "Concurrency, Memory & Process Scheduling",
+    title: "Operating Systems: The Dugout & Pavilion Runtime",
+    badge: "CONCURRENCY & ROTATION",
+    badgeColor: "text-[#06B6D4] bg-[#06B6D4]/10 border-[#06B6D4]/20",
+    hoverBorder: "hover:border-[#06B6D4]/40",
+    concept: "Thread scheduling and bowler rotation under strict pitch-clock constraints.",
     points: [
-      "Thread concurrency, race conditions, mutex locks, and deadlock avoidance.",
-      "Virtual memory layout, page replacement policies, and kernel vs. user space transitions.",
-      "POSIX signals, file descriptor management, and I/O multiplexing."
+      "Multi-threading & Mutexes: Clean strike rotation, eliminating race conditions at the non-striker's end.",
+      "Memory Management: Heap allocations, buffer paging, and fast dugout context switches.",
+      "I/O Multiplexing: Handling simultaneous broadcast, camera, and Hawk-Eye tracking inputs."
     ]
   }
 ];
 
-export const algorithmicRigor = [
+export const cricketAlgorithmicRigor = [
   {
-    tier: "Easy",
-    tag: "FOUNDATIONAL PATTERNS",
+    tier: "Powerplay (Easy)",
+    tag: "OVERS 01–06 // SOLID DEFENSE",
     tagColor: "text-[#10B981] bg-[#10B981]/10 border-[#10B981]/20",
-    title: "Invariants & Edge Case Discipline",
-    focus: "Zero/single-element bounds, off-by-one prevention, and linear complexity baselines.",
-    topics: "Two-pointer array reversals, frequency maps, prefix sums, and basic linked list traversals."
+    hoverBorder: "hover:border-[#10B981]/40",
+    title: "Crease Discipline & Basics",
+    mindset: "Solid footwork, leaving the dangerous balls, and protecting the wickets.",
+    topics: "Two-pointer array reversals, boundary checks, prefix run rates, and linear frequency maps."
   },
   {
-    tier: "Medium",
-    tag: "SYSTEM PATTERNS",
-    tagColor: "text-[#06B6D4] bg-[#06B6D4]/10 border-[#06B6D4]/20",
-    title: "Core Analytical Patterns",
-    focus: "Eliminating redundant O(N²) loops, maintaining state across dynamic windows.",
-    topics: "Monotonic stacks/queues (Next Greater Element), Sliding Window maximums, Binary Search over monotonic answer spaces, Tree DFS/BFS orderings, and Top-K Heaps."
+    tier: "Middle Overs (Medium)",
+    tag: "OVERS 07–15 // BUILDING THE CHASE",
+    tagColor: "text-[#F59E0B] bg-[#F59E0B]/10 border-[#F59E0B]/20",
+    hoverBorder: "hover:border-[#F59E0B]/40",
+    title: "Strike Rotation & Pattern Mastery",
+    mindset: "Piercing the gaps, controlling the required run rate, and maintaining state.",
+    topics: "Monotonic stacks/queues (Next Greater Element / Peak Run Rates), Sliding Window strike-rate caps, Binary Search over required targets, and Heap top-k run-scorers."
   },
   {
-    tier: "Hard",
-    tag: "ADVANCED RIGOR",
-    tagColor: "text-rose-400 bg-rose-400/10 border-rose-400/20",
-    title: "Multi-State Optimization & Advanced Traversal",
-    focus: "Subproblem memoization, optimal substructure, and non-trivial graph pathfinding.",
-    topics: "Dynamic Programming state transitions, Disjoint Set Union (DSU), Shortest path variants (Dijkstra), and complex pointer manipulations."
+    tier: "Death Overs (Hard)",
+    tag: "OVERS 16–20 // HIGH-STAKE FINISH",
+    tagColor: "text-[#EF4444] bg-[#EF4444]/10 border-[#EF4444]/20",
+    hoverBorder: "hover:border-[#EF4444]/40",
+    title: "Boundary Execution & Dynamic Optimization",
+    mindset: "Maximum calculation under high-pressure constraints; zero margin for error.",
+    topics: "Dynamic Programming knapsacks (maximizing total score under over/ball limits), Graph state traversals, and non-trivial pointer manipulations."
   }
 ];
 
