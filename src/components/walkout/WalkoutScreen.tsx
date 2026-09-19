@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { HeaderBanner } from "@/components/nav/HeaderBanner";
 
 export function WalkoutScreen() {
   const [show, setShow] = useState(true);
@@ -172,8 +173,10 @@ export function WalkoutScreen() {
           {/* Full Broadcast HUD Container */}
           <div className="relative z-10 w-full h-full flex flex-col justify-between pointer-events-auto">
             
+            <HeaderBanner />
+
             {/* Top Row (Match & Broadcast Telemetry) */}
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 font-mono">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 font-mono mt-4">
               <div className="space-y-1">
                 <div className="font-bold text-[#10B981] tracking-widest uppercase">🏏 FIXTURE: SDE & APPLIED AI RECRUITMENT 2027</div>
                 <div className="text-[10px] sm:text-xs text-white/70 uppercase">VENUE: MANIPAL UNIVERSITY JAIPUR // DEBUT: METHODIST HIGH SCHOOL, KANPUR</div>
