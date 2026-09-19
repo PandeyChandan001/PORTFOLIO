@@ -205,8 +205,8 @@ export function WalkoutScreen() {
                 All-Rounder in Java, C++, part-time Python, SQL, AI tools
               </div>
               
-              <p className="text-sm md:text-base text-gray-300 italic max-w-lg mb-8 leading-relaxed">
-                "Equipped for green-top seam with 140+ km/h C++ memory management and ready to dispatch short balls with Next.js full-stack strokeplay. Pad up for high-impact engineering."
+              <p className="text-sm md:text-base text-slate-300 font-medium max-w-xl mb-8 leading-relaxed mx-auto">
+                "Taking guard with disciplined OOP architecture in Java and low-level thread synchronization in C++. Driving full-stack deliveries through typed TypeScript pipelines, backed by Python scripts and vector AI embeddings for Hawk-Eye precision. Grounded in ACID-compliant SQL scorekeeping and reliable network handshakes—playing every technical delivery on merit."
               </p>
               
               <button 
