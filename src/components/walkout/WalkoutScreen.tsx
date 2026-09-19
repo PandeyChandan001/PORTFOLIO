@@ -226,13 +226,19 @@ export function WalkoutScreen() {
             <div className="w-full bg-[#0B0E14]/85 border border-emerald-500/40 rounded-3xl p-6 md:p-10 backdrop-blur-xl shadow-[0_0_40px_rgba(16,185,129,0.15)] relative overflow-hidden flex flex-col md:flex-row items-center gap-8 md:gap-12">
               
               {/* Photo Cutout */}
-              <div className="relative w-48 h-48 md:w-72 md:h-72 shrink-0 rounded-2xl overflow-hidden border border-emerald-500/30 shadow-[0_0_30px_rgba(16,185,129,0.2)] bg-black">
-                <div className="absolute inset-0 bg-emerald-500/20 mix-blend-overlay z-10 pointer-events-none" />
+              <div className="relative w-48 h-48 md:w-72 md:h-72 shrink-0 rounded-2xl overflow-hidden border border-emerald-500/40 shadow-[0_0_40px_rgba(16,185,129,0.3)] bg-[#0B0E14]">
+                {/* Emerald Wash / Cinematic Lighting */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-emerald-900/60 via-emerald-500/10 to-emerald-300/30 z-10 pointer-events-none mix-blend-overlay" />
+                
+                {/* Image */}
                 <img 
                   src="/chandan-walkout.jpg" 
                   alt="Chandan Pandey" 
-                  className="w-full h-full object-cover object-top grayscale contrast-125 brightness-90"
+                  className="relative z-0 w-full h-full object-cover object-top grayscale contrast-[1.15] brightness-[1.10]"
                 />
+                
+                {/* Vignette to blend the harsh background edges */}
+                <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(11,14,20,1)] z-20 pointer-events-none" />
               </div>
 
               {/* Dossier Content */}
