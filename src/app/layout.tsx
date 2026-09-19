@@ -5,6 +5,7 @@ import { cn } from "@/lib/cn";
 import { CommandPalette } from "@/components/nav/CommandPalette";
 import { TelemetryHUD } from "@/components/nav/TelemetryHUD";
 import { FooterDock } from "@/components/nav/FooterDock";
+import { WalkoutScreen } from "@/components/walkout/WalkoutScreen";
 import { profile } from "@/data/content";
 
 const inter = Inter({
@@ -13,7 +14,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: `${profile.name} - ${profile.positioning}`,
+  title: `${profile.name} - ${profile.role}`,
   description: profile.bio,
 };
 
@@ -25,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark scroll-smooth">
       <body className={cn(inter.variable, "font-sans min-h-screen bg-background")}>
+        <WalkoutScreen />
         <div className="relative flex min-h-screen flex-col">
           <TelemetryHUD />
           <main className="flex-1">{children}</main>
