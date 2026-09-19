@@ -131,21 +131,5 @@ export const projects = [
       { label: "Live Demo", url: "#" },
       { label: "Source Code", url: "#" }
     ]
-  },
-  {
-    slug: "kv-store",
-    title: "Inning 02: AetherKV — Key-Value Cache Eviction Research",
-    tag: "Systems Research & Concurrency Engine",
-    stack: ["C++", "POSIX Threads", "Cache Benchmarking Tools"],
-    description: "Undergrad systems research examining why traditional LRU caches suffer from cache pollution during sudden bursts of one-off queries.",
-    points: [
-      "Implements frequency-recency queue heuristics (inspired by the modern SIEVE algorithm) to preserve hot cache keys.",
-      "Thread-safe read/write operations using striped mutexes to minimize lock contention across multi-threaded workloads.",
-      "Benchmarked hit-ratio gains and tail latency against classical LRU across skewed Zipfian access traces."
-    ],
-    links: [
-      { label: "View Implementation on GitHub", url: "#" },
-      { label: "Read Research Notes", url: "#" }
-    ]
   }
 ];
