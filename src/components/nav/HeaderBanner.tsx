@@ -10,12 +10,9 @@ export function HeaderBanner() {
           PORTFOLIO: CRICKET EDITION
         </span>
       </div>
-      <h2 className="text-white font-mono text-sm md:text-base font-semibold tracking-tight text-center">
+      <h2 className="text-white font-mono text-base md:text-lg font-bold tracking-tight text-center">
         "A Software Engineer's Portfolio, Played on 22 Yards."
       </h2>
-      <p className="text-slate-400 font-mono text-xs md:text-sm mt-1 text-center max-w-lg">
-        "Code, systems, and full-stack projects built like a live cricket innings."
-      </p>
     </div>
   );
 }
