@@ -195,16 +195,18 @@ export function WalkoutScreen() {
             </div>
 
             {/* Center Stage: Batter Walkout Dossier Card */}
-            <div className="max-w-2xl mx-auto w-full bg-black/75 backdrop-blur-xl border border-[#10B981]/40 rounded-2xl p-6 md:p-8 shadow-[0_0_50px_rgba(16,185,129,0.15)] text-center relative overflow-hidden flex flex-col items-center">
-              <div className="text-[#10B981] font-mono text-xs uppercase tracking-widest mb-4 font-bold">
-                MATCH INNINGS 01 // OVER 00.1 // NEXT BATTER TO THE CREASE
+            <div className="flex flex-col items-center w-full">
+              <div className="text-center mb-3 md:mb-4">
+                <h2 className="font-mono text-xl md:text-2xl font-black tracking-[0.3em] text-emerald-400 uppercase drop-shadow-[0_0_15px_rgba(16,185,129,0.6)]">
+                  NEXT BATTER TO THE CREASE
+                </h2>
               </div>
-              
-              <h1 className="text-3xl md:text-5xl font-black text-white mb-3 uppercase tracking-tight font-sans">
-                CHANDAN PANDEY
-              </h1>
-              
-              <div className="bg-[#10B981]/10 border border-[#10B981]/20 px-4 py-1.5 rounded-full font-mono text-[10px] sm:text-xs text-[#06B6D4] uppercase tracking-wider mb-6">
+              <div className="max-w-2xl mx-auto w-full bg-black/75 backdrop-blur-xl border border-[#10B981]/40 rounded-2xl p-6 md:p-8 shadow-[0_0_50px_rgba(16,185,129,0.15)] text-center relative overflow-hidden flex flex-col items-center">
+                <h1 className="text-3xl md:text-5xl font-black text-white mb-3 uppercase tracking-tight font-sans">
+                  CHANDAN PANDEY
+                </h1>
+                
+                <div className="bg-[#10B981]/10 border border-[#10B981]/20 px-4 py-1.5 rounded-full font-mono text-[10px] sm:text-xs text-[#06B6D4] uppercase tracking-wider mb-6">
                 All-Rounder in Java, C++, part-time Python, SQL, AI tools
               </div>
               
@@ -225,6 +227,7 @@ export function WalkoutScreen() {
               >
                 [ Skip walkout & view scorecard directly (Muted) ]
               </button>
+            </div>
             </div>
 
             {/* Bottom Row (Dugout Strategy & Playing XI Lineup) */}
