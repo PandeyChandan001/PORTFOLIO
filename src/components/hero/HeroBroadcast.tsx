@@ -1,7 +1,7 @@
 "use client";
 
 import { profile } from "@/data/content";
-import { PitchCanvas } from "./PitchCanvas";
+import { CricketMatchDeck } from "./CricketMatchDeck";
 
 export function HeroBroadcast() {
   return (
@@ -81,9 +81,9 @@ export function HeroBroadcast() {
         </div>
 
         {/* Right Column: Interactive Pitch Simulation Canvas */}
-        <div className="flex items-center justify-center lg:justify-end w-full h-[400px] lg:h-auto py-8">
-          <div className="w-full max-w-sm h-[500px]">
-             <PitchCanvas />
+        <div className="flex items-center justify-center lg:justify-end w-full h-[550px] lg:h-auto py-8 lg:py-0">
+          <div className="w-full max-w-sm h-full max-h-[600px] min-h-[500px]">
+             <CricketMatchDeck />
           </div>
         </div>
       </div>
