@@ -157,7 +157,7 @@ export function WalkoutScreen() {
     <AnimatePresence>
       {show && (
         <motion.div 
-          className="fixed inset-0 z-[100] w-screen h-screen flex items-center justify-center p-4 md:p-8 select-none overflow-hidden bg-black/60 text-white"
+          className="fixed inset-0 z-[100] w-screen h-screen flex items-center justify-center select-none overflow-hidden bg-black/60 text-white"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 1.15, filter: "blur(10px)" }}
           transition={{ duration: 0.7, ease: "easeInOut" }}
@@ -169,36 +169,88 @@ export function WalkoutScreen() {
           />
           <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.85) 100%)' }} />
 
-          {/* Center Walkout Card Only */}
-          <div className="relative z-10 flex flex-col items-center w-full max-w-2xl">
-            <div className="text-center mb-3 md:mb-4">
-              <h2 className="font-mono text-xl md:text-2xl font-black tracking-[0.3em] text-emerald-400 uppercase drop-shadow-[0_0_15px_rgba(16,185,129,0.6)]">
+          {/* Real-World Broadcast Telemetry Overlay */}
+          <div className="fixed inset-0 p-6 md:p-8 pointer-events-none z-30 flex flex-col justify-between">
+            {/* Top Row */}
+            <div className="flex justify-between items-start">
+              {/* Top-Left: Historic Venue & Fixture */}
+              <div className="flex flex-col gap-1 select-none pointer-events-none">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse" />
+                  <span className="text-white font-black text-xs md:text-sm tracking-widest uppercase font-sans">
+                    LIVE // LORD'S CRICKET GROUND
+                  </span>
+                </div>
+                <span className="text-neutral-400 font-mono text-[11px] tracking-wider uppercase">
+                  THE ASHES • DAY 5 // FINAL INNINGS
+                </span>
+              </div>
+              
+              {/* Top-Right: Target Status */}
+              <div className="flex flex-col items-end gap-1 select-none pointer-events-none">
+                <div className="bg-white text-black font-black text-xs px-2 py-0.5 uppercase tracking-widest">
+                  TARGET: INTERNSHIP 2027
+                </div>
+                <div className="text-amber-400 font-mono text-[11px] font-bold uppercase tracking-wider">
+                  REQ RUN RATE: HIGH
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Row */}
+            <div className="flex justify-between items-end">
+              {/* Bottom-Left: Conditions */}
+              <div className="flex flex-col gap-1 select-none pointer-events-none">
+                <div className="text-neutral-400 font-mono text-[10px] uppercase tracking-widest">
+                  CONDITIONS
+                </div>
+                <div className="text-white font-black text-xs tracking-wider uppercase">
+                  OVERCAST // SEAM MOVEMENT EXPECTED
+                </div>
+              </div>
+
+              {/* Bottom-Right: Session */}
+              <div className="flex flex-col items-end gap-1 select-none pointer-events-none">
+                <div className="text-neutral-400 font-mono text-[10px] uppercase tracking-widest">
+                  MATCH STATUS
+                </div>
+                <div className="text-white font-black text-xs tracking-wider uppercase">
+                  SESSION 3 // BALL 1
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Center Walkout Card */}
+          <div className="relative z-40 flex flex-col items-center w-full max-w-2xl px-4">
+            <div className="text-center mb-3 md:mb-4 bg-white text-black px-6 py-1 border-b-4 border-red-600 shadow-xl">
+              <h2 className="font-sans text-xl md:text-2xl font-black tracking-widest uppercase">
                 NEXT BATTER TO THE CREASE
               </h2>
             </div>
-            <div className="w-full bg-black/75 backdrop-blur-xl border border-[#10B981]/40 rounded-2xl p-6 md:p-8 shadow-[0_0_50px_rgba(16,185,129,0.15)] text-center relative overflow-hidden flex flex-col items-center">
+            <div className="w-full bg-neutral-900/95 backdrop-blur-md border border-white/10 rounded-sm p-6 md:p-8 shadow-2xl text-center relative overflow-hidden flex flex-col items-center">
               <h1 className="text-3xl md:text-5xl font-black text-white mb-3 uppercase tracking-tight font-sans">
                 CHANDAN PANDEY
               </h1>
               
-              <div className="bg-[#10B981]/10 border border-[#10B981]/20 px-4 py-1.5 rounded-full font-mono text-[10px] sm:text-xs text-[#06B6D4] uppercase tracking-wider mb-6">
+              <div className="bg-white/10 border border-white/20 px-4 py-1.5 font-mono text-[10px] sm:text-xs text-slate-100 uppercase tracking-wider mb-6">
                 All-Rounder in Java, C++, part-time Python, SQL, AI tools
               </div>
               
-              <p className="text-sm md:text-base text-slate-300 font-medium max-w-xl mb-8 leading-relaxed mx-auto">
+              <p className="text-sm md:text-base text-neutral-300 font-medium max-w-xl mb-8 leading-relaxed mx-auto font-sans">
                 "Taking guard with disciplined OOP architecture in Java and low-level thread synchronization in C++. Driving full-stack deliveries through typed TypeScript pipelines, backed by Python scripts and vector AI embeddings for Hawk-Eye precision. Grounded in ACID-compliant SQL scorekeeping and reliable network handshakes—playing every technical delivery on merit."
               </p>
               
               <button 
                 onClick={handleTakeGuard}
-                className="bg-[#10B981] hover:bg-[#34d399] text-black font-extrabold text-lg tracking-wider py-4 px-10 rounded-xl shadow-[0_10px_20px_rgba(16,185,129,0.3)] transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-3 w-full sm:w-auto uppercase"
+                className="bg-white hover:bg-neutral-200 text-black font-black text-lg tracking-widest py-4 px-10 border-b-4 border-neutral-400 transition-all active:border-b-0 active:translate-y-1 flex items-center justify-center gap-3 w-full sm:w-auto uppercase"
               >
                 <span>🏏</span> TAKE GUARD & WALK OUT
               </button>
               
               <button 
                 onClick={handleSkip}
-                className="mt-5 text-[11px] text-white/40 hover:text-white transition-colors underline underline-offset-4"
+                className="mt-5 text-[11px] text-neutral-500 hover:text-white transition-colors underline underline-offset-4 font-mono"
               >
                 [ Skip walkout & view scorecard directly (Muted) ]
               </button>
