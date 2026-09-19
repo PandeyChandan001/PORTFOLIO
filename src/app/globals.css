@@ -30,3 +30,11 @@
     @apply bg-background text-foreground antialiased selection:bg-accent selection:text-accent-foreground;
   }
 }
+
+@layer utilities {
+  .safari-blur-fix {
+    @supports (-webkit-backdrop-filter: none) {
+      -webkit-backdrop-filter: blur(4px);
+    }
+  }
+}

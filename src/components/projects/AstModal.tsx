@@ -19,12 +19,16 @@ export function AstModal({ project, onClose }: AstModalProps) {
   }, [onClose]);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm p-4 sm:p-6">
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-background/80 backdrop-blur-sm safari-blur-fix p-0 sm:p-6">
       <div 
-        className="relative w-full max-w-4xl max-h-[90vh] overflow-hidden rounded-xl border bg-background shadow-2xl flex flex-col"
+        className="relative w-full max-w-4xl h-[90vh] sm:h-auto sm:max-h-[90vh] overflow-hidden rounded-t-2xl sm:rounded-xl border border-b-0 sm:border-b bg-background shadow-2xl flex flex-col transition-transform animate-in slide-in-from-bottom-full sm:slide-in-from-bottom-0 sm:zoom-in-95 duration-300"
         role="dialog"
         aria-modal="true"
       >
+        <div className="flex items-center justify-center sm:hidden p-2 pt-3">
+          <div className="h-1.5 w-12 rounded-full bg-muted-foreground/30" />
+        </div>
+        
         <div className="flex items-center justify-between border-b p-4">
           <h2 className="text-lg font-semibold">{project.title}</h2>
           <button 
