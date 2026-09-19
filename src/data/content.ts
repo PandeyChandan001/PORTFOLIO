@@ -96,18 +96,40 @@ export const cricketAlgorithmicRigor = [
 export const projects = [
   {
     slug: "career-copilot",
-    title: "Inning 01: Career Co-Pilot — Real-Time ATS Intelligence Engine",
-    tag: "Applied AI / Hawk-Eye Document Analyst",
-    stack: ["Next.js 15", "TypeScript", "Tailwind CSS", "Zod", "AI SDK / Vector Embeddings"],
-    description: "Solves inaccurate parsing and LLM hallucinations by ingesting multi-page PDF resumes into strictly validated Zod schemas.",
+    title: "Career Co-Pilot — ATS Audit & Interview Preparation Engine",
+    tag: "FLAGSHIP INNINGS 01 // HAWK-EYE ATS ANALYST",
+    stack: ["Next.js 15 (App Router)", "TypeScript", "Tailwind CSS", "OpenRouter (DeepSeek)", "Prisma ORM", "PostgreSQL (Neon)", "Clerk Auth", "Zod"],
+    description: "Engineered a full-stack ATS audit and career preparation platform executing real-time semantic gap analysis, role-specific readiness scoring, and structured interview roadmap generation between resumes and target job descriptions.",
     points: [
-      "Ingestion pipeline extracting raw PDF text tokens, mapped defensively into typed schemas to reject malformed JSON.",
-      "Hybrid scoring system combining deterministic keyword extraction (hard skills, certifications) with vector cosine embeddings for contextual role relevance.",
-      "Automated technical curriculum generator that translates candidate deficiencies into weekly interview roadmaps."
+      "Architected a resilient AI orchestration pipeline utilizing DeepSeek models via OpenRouter, implementing custom prompt constraints, regex markdown sanitization, and Zod schema validation to completely eliminate JSON parsing exceptions.",
+      "Decoupled LLM inference from persistence layers using isolated asynchronous transaction wrappers, guaranteeing sub-second client delivery even during database throttling.",
+      "Built an interactive Next.js dashboard featuring dynamic ATS compatibility gauges, a missing keyword matrix with one-click contextual copy actions, a 3-week sprint remediation plan, and an automated STAR-method interview scenario simulator.",
+      "Designed a native client-side PDF export engine with custom @media print styling, enabling single-click downloads of tailored preparation guides while stripping application navigation state."
     ],
+    deepDive: {
+      overview: "Career Co-Pilot is an end-to-end career enablement suite designed to eliminate the guesswork of ATS screening. Unlike typical wrapper tools that offer generic feedback, Career Co-Pilot performs deterministic keyword matching, semantic skill gap identification, and generates role-specific interview preparation kits using high-reasoning LLMs.",
+      highlights: [
+        {
+          title: "Strict Type-Safe Schema Validation",
+          desc: "Integrated Zod to strictly validate complex AI JSON responses (match scores, skill categorizations, action plans). Built fallback normalization routines that gracefully handle type coercions (e.g., stringified numerics) to prevent UI hydration or render-phase crashes."
+        },
+        {
+          title: "Resilient Multi-Stage Pipeline",
+          desc: "Engineered an asynchronous orchestration layer using an OpenAI-compatible interface via OpenRouter. Implemented defensive database save routines where database persistence failures fail silently in the background rather than blocking the real-time presentation of AI audit results to the user."
+        },
+        {
+          title: "Jobscan-Style Gap Matrix & STAR Interview Simulator",
+          desc: "Developed modular React UI components that categorize skills into actionable groups (hard skills, tools, required vs. preferred) and dynamically construct tailored STAR (Situation, Task, Action, Result) interview scripts tailored to the candidate's exact identified gaps."
+        },
+        {
+          title: "Client-Side Export Pipeline",
+          desc: "Engineered zero-overhead document export utilizing targeted CSS print media rules, providing instant, styled PDF report generation without introducing heavy server-side headless browser dependencies."
+        }
+      ]
+    },
     links: [
-      { label: "View Live Deployment", url: "#" },
-      { label: "Inspect Code on GitHub", url: "#" }
+      { label: "Live Demo", url: "#" },
+      { label: "Source Code", url: "#" }
     ]
   },
   {
