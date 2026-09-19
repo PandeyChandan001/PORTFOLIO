@@ -51,3 +51,10 @@
     }
   }
 }
+
+/* Hide Next.js Dev Toolbar & Indicators */
+nextjs-portal,
+#__next-build-watcher,
+[data-nextjs-toast] {
+  display: none !important;
+}
