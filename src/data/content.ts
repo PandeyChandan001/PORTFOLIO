@@ -15,22 +15,60 @@ export const skills = {
   coreCS: ["Data Structures & Algorithms", "Computer Networks (CCNA foundations)", "IoT & Information Security fundamentals"]
 };
 
-export const invariants = [
+export const csFundamentals = [
   {
-    title: "Monotonic Queues & Stacks",
-    description: "Maintaining order for O(1) sliding window extremes and next greater elements."
+    title: "Computer Networks & Protocols",
+    subheader: "Layer 4–7 Architecture & Transport",
+    points: [
+      "TCP/UDP socket lifecycles, 3-way handshake, congestion control, and flow window sizing.",
+      "HTTP/1.1 vs. HTTP/2 multiplexing, WebSocket bidirectional streaming, and DNS resolution paths.",
+      "IP addressing, subnetting, and foundational routing principles."
+    ]
   },
   {
-    title: "Two-Pointer & Sliding Window",
-    description: "Reducing nested loops from O(N²) to O(N) (e.g., 3Sum, substring containment)."
+    title: "SQL & Relational Database Internals",
+    subheader: "ACID, Indexing & Query Optimizations",
+    points: [
+      "Relational modeling, 3NF schema normalization, and ER diagram design.",
+      "Indexing mechanics: B-Trees vs. Hash indices, explain plans, and avoiding table scans.",
+      "Transaction isolation levels (Read Committed, Repeatable Read, Serializable) and concurrency locks."
+    ]
   },
   {
-    title: "Binary Search Predicates",
-    description: "Space reduction over monotonic predicates and rotated arrays."
+    title: "Operating Systems & Runtime Mechanics",
+    subheader: "Concurrency, Memory & Process Scheduling",
+    points: [
+      "Thread concurrency, race conditions, mutex locks, and deadlock avoidance.",
+      "Virtual memory layout, page replacement policies, and kernel vs. user space transitions.",
+      "POSIX signals, file descriptor management, and I/O multiplexing."
+    ]
+  }
+];
+
+export const algorithmicRigor = [
+  {
+    tier: "Easy",
+    tag: "FOUNDATIONAL PATTERNS",
+    tagColor: "text-[#10B981] bg-[#10B981]/10 border-[#10B981]/20",
+    title: "Invariants & Edge Case Discipline",
+    focus: "Zero/single-element bounds, off-by-one prevention, and linear complexity baselines.",
+    topics: "Two-pointer array reversals, frequency maps, prefix sums, and basic linked list traversals."
   },
   {
-    title: "Dynamic Trees, Heaps & Linked Structures",
-    description: "Cycle detection, pointer mutation, and heap top-k orderings."
+    tier: "Medium",
+    tag: "SYSTEM PATTERNS",
+    tagColor: "text-[#06B6D4] bg-[#06B6D4]/10 border-[#06B6D4]/20",
+    title: "Core Analytical Patterns",
+    focus: "Eliminating redundant O(N²) loops, maintaining state across dynamic windows.",
+    topics: "Monotonic stacks/queues (Next Greater Element), Sliding Window maximums, Binary Search over monotonic answer spaces, Tree DFS/BFS orderings, and Top-K Heaps."
+  },
+  {
+    tier: "Hard",
+    tag: "ADVANCED RIGOR",
+    tagColor: "text-rose-400 bg-rose-400/10 border-rose-400/20",
+    title: "Multi-State Optimization & Advanced Traversal",
+    focus: "Subproblem memoization, optimal substructure, and non-trivial graph pathfinding.",
+    topics: "Dynamic Programming state transitions, Disjoint Set Union (DSU), Shortest path variants (Dijkstra), and complex pointer manipulations."
   }
 ];
 
