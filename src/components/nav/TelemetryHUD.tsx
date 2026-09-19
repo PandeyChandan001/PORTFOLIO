@@ -18,16 +18,28 @@ export function TelemetryHUD() {
   }, []);
 
   return (
-    <div className="sticky top-0 z-50 w-full border-b border-white/10 bg-[#05070B]/80 backdrop-blur-md px-4 py-2 flex items-center justify-between font-mono text-[10px] sm:text-xs text-muted-foreground uppercase tracking-wider shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)]">
-      <div className="flex items-center gap-2">
-        <span className="text-foreground">MATCH STATUS: AVAILABLE FOR INTERNSHIPS</span>
+    <div className="sticky top-0 z-50 w-full border-b border-white/10 bg-[#05070B]/90 backdrop-blur-md px-4 py-3 flex items-center justify-between font-mono text-[10px] sm:text-xs text-muted-foreground uppercase tracking-wider shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)]">
+      <div className="flex items-center gap-2 text-foreground font-semibold">
+        <span className="relative flex h-2 w-2">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#10B981] opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-[#10B981]"></span>
+        </span>
+        MATCH LIVE // SUMMER 2027 FIXTURE
       </div>
       
+      <div className="hidden lg:flex items-center gap-6 font-semibold">
+        <a href="#innings" className="hover:text-white transition-colors">Projects</a>
+        <a href="#pitch-canvas" className="hover:text-white transition-colors">Simulator</a>
+        <a href="#skills" className="hover:text-white transition-colors">Arsenal</a>
+        <a href="#cs-foundations" className="hover:text-white transition-colors">Fundamentals</a>
+        <a href="#education" className="hover:text-white transition-colors">Education</a>
+      </div>
+
       <div className="flex items-center gap-4">
         <div className="font-mono hidden sm:block">{time}</div>
         <button 
           onClick={() => setMuted(!muted)}
-          className="text-muted-foreground hover:text-foreground transition-colors bg-white/5 p-1.5 rounded-full"
+          className="text-muted-foreground hover:text-white transition-colors bg-white/5 p-1.5 rounded-full"
           title="Toggle Match Audio"
         >
           {muted ? <VolumeX size={14} /> : <Volume2 size={14} />}

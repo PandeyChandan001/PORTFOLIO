@@ -25,54 +25,34 @@ export function HeroBroadcast() {
             
             <div className="p-6 sm:p-8 space-y-6">
               <h2 className="text-3xl font-extrabold text-white tracking-tight uppercase border-b border-white/10 pb-4">
-                CHANDAN PANDEY
+                {profile.name}
               </h2>
 
               {/* Data Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 font-mono">
-                <div className="space-y-1 border-l-2 border-[#10B981]/30 pl-3">
-                  <div className="text-slate-400 text-xs tracking-wider uppercase">Batting Style</div>
-                  <div className="text-white text-sm">Top-Order Anchor <span className="text-[#06B6D4]">(TypeScript, Next.js 15, Responsive UI)</span></div>
-                </div>
-                
-                <div className="space-y-1 border-l-2 border-[#10B981]/30 pl-3">
-                  <div className="text-slate-400 text-xs tracking-wider uppercase">Bowling Action</div>
-                  <div className="text-white text-sm">Right-Arm Express Pace <span className="text-[#06B6D4]">(C++, Java, Low-Latency Memory & Concurrency)</span></div>
+                <div className="space-y-1 border-l-2 border-[#10B981]/30 pl-3 md:col-span-2">
+                  <div className="text-slate-400 text-xs tracking-wider uppercase">Role</div>
+                  <div className="text-[#06B6D4] text-sm">{profile.role}</div>
                 </div>
 
                 <div className="space-y-1 border-l-2 border-[#10B981]/30 pl-3">
-                  <div className="text-slate-400 text-xs tracking-wider uppercase">Specialist Shot</div>
-                  <div className="text-white text-sm">Cover Drive through Zod-Validated Schemas & Clean APIs</div>
+                  <div className="text-slate-400 text-xs tracking-wider uppercase">Debut Ground (School)</div>
+                  <div className="text-white text-sm">{profile.debut}</div>
                 </div>
 
                 <div className="space-y-1 border-l-2 border-[#10B981]/30 pl-3">
-                  <div className="text-slate-400 text-xs tracking-wider uppercase">Mystery Delivery</div>
-                  <div className="text-white text-sm">SIEVE Cache Eviction (Beating LRU Pollution under High Skew)</div>
+                  <div className="text-slate-400 text-xs tracking-wider uppercase">Home Ground (College)</div>
+                  <div className="text-white text-sm">{profile.homeGround}</div>
                 </div>
 
                 <div className="space-y-1 border-l-2 border-[#10B981]/30 pl-3">
-                  <div className="text-slate-400 text-xs tracking-wider uppercase">6th Bowling Option</div>
-                  <div className="text-white text-sm">Part-Time Python, SQL Scorekeeping & Applied AI Embeddings</div>
+                  <div className="text-slate-400 text-xs tracking-wider uppercase">Curr. Innings</div>
+                  <div className="text-white text-sm">{profile.innings}</div>
                 </div>
 
-                <div className="space-y-1 border-l-2 border-[#10B981]/30 pl-3">
-                  <div className="text-slate-400 text-xs tracking-wider uppercase">Academy Grounds</div>
-                  <div className="text-white text-sm">Methodist High School, Kanpur</div>
-                </div>
-
-                <div className="space-y-1 border-l-2 border-[#10B981]/30 pl-3">
-                  <div className="text-slate-400 text-xs tracking-wider uppercase">Home Franchise</div>
-                  <div className="text-white text-sm">Manipal University Jaipur</div>
-                </div>
-
-                <div className="space-y-1 border-l-2 border-[#10B981]/30 pl-3">
-                  <div className="text-slate-400 text-xs tracking-wider uppercase">Current Innings</div>
-                  <div className="text-white text-sm">Innings 05 (B.Tech CSE: IoT & Intelligent Systems)</div>
-                </div>
-
-                <div className="space-y-1 border-l-2 border-[#10B981]/30 pl-3 md:col-span-2 mt-2">
-                  <div className="text-slate-400 text-xs tracking-wider uppercase">Match Form</div>
-                  <div className="text-[#10B981] font-semibold text-sm">🟢 Match-Fit // Available for SDE & Applied AI Internships</div>
+                <div className="space-y-1 border-l-2 border-[#10B981]/30 pl-3 mt-2">
+                  <div className="text-slate-400 text-xs tracking-wider uppercase">Form Status</div>
+                  <div className="text-[#10B981] font-semibold text-sm">{profile.status}</div>
                 </div>
               </div>
             </div>
@@ -84,7 +64,7 @@ export function HeroBroadcast() {
             </div>
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <button 
-                onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
+                onClick={() => document.getElementById("innings")?.scrollIntoView({ behavior: "smooth" })}
                 className="rounded-md bg-foreground text-background px-6 py-3 text-sm font-semibold transition-transform hover:scale-[1.02] active:scale-95 flex items-center gap-2"
               >
                 <span>🏏</span> Inspect Flagship Innings

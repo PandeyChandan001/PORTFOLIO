@@ -2,11 +2,11 @@ import { cricketCSFundamentals, cricketAlgorithmicRigor } from "@/data/content";
 
 export function CSFundamentals() {
   return (
-    <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 border-t border-white/10">
+    <section id="cs-foundations" className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 border-t border-white/10">
       <div className="mb-16">
-        <h2 className="text-3xl font-bold tracking-tight text-foreground">Match Practice: CS Fundamentals & Problem Solving</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-foreground">Match Playbook: CS Fundamentals & Algorithmic Innings Deck</h2>
         <div className="mt-6 border-l-2 border-[#10B981] pl-4 italic text-muted-foreground max-w-3xl leading-relaxed">
-          "Just like reading the pitch before opening the batting, writing good software starts with knowing how networks, databases, and algorithms actually behave."
+          "Focusing on deep algorithmic invariants and deliberate pattern mastery across curated problems rather than grinding repetitive question counts."
         </div>
       </div>
 
@@ -14,7 +14,7 @@ export function CSFundamentals() {
         {/* Block A: The Basics (Core CS Pitch Report) */}
         <div>
           <div className="mb-6 font-mono text-xs uppercase tracking-wider text-[#06B6D4]">
-            // Block A: The Basics (Core CS Pitch Report)
+            // Block A: Pitch Report (Core CS Fundamentals)
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {cricketCSFundamentals.map((card, idx) => (
@@ -41,7 +41,7 @@ export function CSFundamentals() {
         {/* Block B: The Innings (DSA Progression) */}
         <div>
           <div className="mb-6 font-mono text-xs uppercase tracking-wider text-[#06B6D4]">
-            // Block B: The Innings (DSA Progression — 50+ Curated Problems)
+            // Block B: The Innings Curve (DSA Progression Across Problem Tiers)
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {cricketAlgorithmicRigor.map((tier, idx) => (

@@ -15,12 +15,46 @@ export function WalkoutScreen() {
     }
   }, []);
 
-  const playProceduralCrowdRoar = () => {
+  const playProceduralEntrance = () => {
     try {
       const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
       if (!AudioContext) return;
       const ctx = new AudioContext();
+      const t = ctx.currentTime;
       
+      // 1. Synthesize Brass Fanfare (C4 -> G4 -> C5)
+      const playNote = (freq: number, start: number, dur: number) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "sawtooth"; // Brass-like
+        osc.frequency.setValueAtTime(freq, start);
+        
+        // Brass envelope
+        gain.gain.setValueAtTime(0, start);
+        gain.gain.linearRampToValueAtTime(0.3, start + 0.1);
+        gain.gain.exponentialRampToValueAtTime(0.01, start + dur);
+        
+        // Filter for brassy swell
+        const filter = ctx.createBiquadFilter();
+        filter.type = "lowpass";
+        filter.frequency.setValueAtTime(800, start);
+        filter.frequency.linearRampToValueAtTime(2500, start + 0.1);
+        filter.frequency.exponentialRampToValueAtTime(800, start + dur);
+
+        osc.connect(filter);
+        filter.connect(gain);
+        gain.connect(ctx.destination);
+        
+        osc.start(start);
+        osc.stop(start + dur);
+      };
+
+      // C4 (261.63Hz) -> G4 (392.00Hz) -> C5 (523.25Hz)
+      playNote(261.63, t, 0.4);
+      playNote(392.00, t + 0.4, 0.4);
+      playNote(523.25, t + 0.8, 1.2);
+
+      // 2. Synthesize Crowd Roar (Pink Noise Burst with Slow Decay)
       const duration = 3.5; 
       const sampleRate = ctx.sampleRate;
       const bufferSize = sampleRate * duration;
@@ -44,27 +78,27 @@ export function WalkoutScreen() {
       const noiseSource = ctx.createBufferSource();
       noiseSource.buffer = buffer;
 
-      const filter = ctx.createBiquadFilter();
-      filter.type = "lowpass";
-      filter.frequency.value = 1200;
+      const noiseFilter = ctx.createBiquadFilter();
+      noiseFilter.type = "lowpass";
+      noiseFilter.frequency.value = 1000;
 
-      const gainNode = ctx.createGain();
-      gainNode.gain.setValueAtTime(0, ctx.currentTime);
-      gainNode.gain.linearRampToValueAtTime(0.6, ctx.currentTime + 0.5);
-      gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + duration);
+      const noiseGain = ctx.createGain();
+      noiseGain.gain.setValueAtTime(0, t);
+      noiseGain.gain.linearRampToValueAtTime(0.5, t + 0.8); // Peak with C5
+      noiseGain.gain.exponentialRampToValueAtTime(0.01, t + duration);
 
-      noiseSource.connect(filter);
-      filter.connect(gainNode);
-      gainNode.connect(ctx.destination);
+      noiseSource.connect(noiseFilter);
+      noiseFilter.connect(noiseGain);
+      noiseGain.connect(ctx.destination);
 
-      noiseSource.start();
+      noiseSource.start(t);
     } catch (e) {
       console.warn("Audio synthesis failed:", e);
     }
   };
 
   const handleTakeGuard = () => {
-    playProceduralCrowdRoar();
+    playProceduralEntrance();
     sessionStorage.setItem("hasWalkedOut", "true");
     setShow(false);
   };
@@ -90,42 +124,20 @@ export function WalkoutScreen() {
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: `url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=2000&q=80')` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/75 to-black/60 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#05070B] via-[#080B10]/85 to-transparent pointer-events-none" />
 
           {/* Full Broadcast HUD Container */}
           <div className="relative z-10 w-full h-full flex flex-col justify-between p-6 md:p-10 pointer-events-auto">
             
-            {/* Top Row */}
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div className="flex flex-col md:flex-row items-start justify-between gap-4">
               <div className="space-y-1 opacity-80">
-                <div>MATCH: SUMMER 2027 SDE & AI FIXTURE</div>
-                <div className="text-[#F59E0B]">SURFACE: 22-YARD CS ARCHITECTURE // HARD SEAM</div>
-                <div className="text-[#06B6D4]">WEATHER: HIGH-THROUGHPUT EXECUTION // ZERO DROPPED CATCHES</div>
-              </div>
-              <div className="flex flex-col items-end gap-1 text-right">
-                <div className="flex items-center gap-2 bg-black/40 px-3 py-1.5 rounded-full border border-white/10 backdrop-blur-sm">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#10B981] opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#10B981]"></span>
-                  </span>
-                  <span>LIVE MATCH BROADCAST</span>
-                </div>
-                <div className="text-[10px] opacity-60">STADIUM ACOUSTICS: UNMUTED ON ENTRY</div>
+                <div className="text-[#10B981] animate-pulse font-bold tracking-widest text-lg">MATCH DAY // STADIUM TUNNEL</div>
+                <div className="text-xl">NEXT BATTER IN: CHANDAN PANDEY</div>
+                <div className="text-[#06B6D4]">Role: All-Rounder in Java, C++, part-time Python, SQL, AI tools</div>
               </div>
             </div>
 
-            {/* Center Walkout Broadcast Plaque */}
-            <div className="max-w-xl mx-auto w-full text-center bg-black/65 backdrop-blur-md border border-[#10B981]/40 p-8 rounded-2xl shadow-2xl flex flex-col items-center">
-              <div className="text-[#10B981] mb-2 font-bold animate-pulse">
-                DUGOUT CALL-UP // INNINGS 01 • OVER 00.1
-              </div>
-              <h1 className="text-2xl sm:text-3xl font-extrabold text-white mb-2 leading-tight font-sans tracking-normal">
-                NEXT BATTER TO THE CREASE:<br/>CHANDAN PANDEY
-              </h1>
-              <div className="text-[#06B6D4] mb-8 text-[11px] sm:text-xs">
-                All-Rounder in Java, C++, part-time Python, SQL, AI tools
-              </div>
-              
+            <div className="max-w-xl mx-auto w-full text-center flex flex-col items-center mt-12">
               <button 
                 onClick={handleTakeGuard}
                 className="bg-[#10B981] hover:bg-[#34d399] text-black font-bold tracking-wide py-4 px-8 rounded-xl shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] text-sm sm:text-lg transition-all active:scale-95 w-full sm:w-auto"
@@ -137,25 +149,11 @@ export function WalkoutScreen() {
                 onClick={handleSkip}
                 className="mt-6 text-[10px] text-white/50 hover:text-white transition-colors underline underline-offset-4 normal-case tracking-normal"
               >
-                [ Skip walkout & view scorecard directly ]
+                [ Skip to Scorecard (Muted) ]
               </button>
             </div>
 
-            {/* Bottom Row */}
-            <div className="flex flex-col md:flex-row items-end justify-between gap-6 opacity-70">
-              <div className="max-w-md">
-                <div className="text-[#10B981] mb-1 font-bold">PITCH REPORT:</div>
-                <div className="text-[10px] leading-relaxed normal-case font-sans">
-                  "Surface rewards low-latency C++ line-and-length, clean Next.js strokeplay, and deterministic Zod schema fielding."
-                </div>
-              </div>
-              <div className="text-right">
-                <div className="text-[9px] sm:text-[10px] bg-black/40 px-3 py-2 rounded border border-white/10 backdrop-blur-sm">
-                  BATSMAN: NEXT.JS 15 • BOWLER: C++ CACHE •<br className="sm:hidden" /> WICKET-KEEPER: SQL • DRS: APPLIED AI
-                </div>
-              </div>
-            </div>
-
+            <div />
           </div>
         </motion.div>
       )}

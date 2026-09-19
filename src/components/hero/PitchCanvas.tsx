@@ -1,13 +1,37 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
 
 type Mode = "fast" | "drive" | "hawkeye";
 
 export function PitchCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [mode, setMode] = useState<Mode>("fast");
+
+  const playBatSound = () => {
+    try {
+      const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
+      if (!AudioContext) return;
+      const ctx = new AudioContext();
+      
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(800, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(100, ctx.currentTime + 0.1);
+      
+      gain.gain.setValueAtTime(1, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
+      
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      
+      osc.start();
+      osc.stop(ctx.currentTime + 0.1);
+    } catch (e) {
+      // Ignore
+    }
+  };
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -18,9 +42,10 @@ export function PitchCanvas() {
 
     let animationFrameId: number;
     let frame = 0;
+    let soundPlayed = false;
+    const sparks: { x: number, y: number, vx: number, vy: number, life: number }[] = [];
 
     const resize = () => {
-      // Setup relative sizing based on container
       const parent = canvas.parentElement;
       if (parent) {
         canvas.width = parent.clientWidth;
@@ -31,34 +56,29 @@ export function PitchCanvas() {
     window.addEventListener("resize", resize);
 
     const drawPitch = (ctx: CanvasRenderingContext2D, w: number, h: number) => {
-      // Draw 22-yard strip
-      ctx.fillStyle = "rgba(255, 255, 255, 0.02)";
+      ctx.fillStyle = "rgba(16, 185, 129, 0.03)";
       const pitchW = w * 0.4;
       const pitchX = (w - pitchW) / 2;
       ctx.fillRect(pitchX, 0, pitchW, h);
 
-      // Draw popping creases
-      ctx.strokeStyle = "rgba(255, 255, 255, 0.2)";
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.3)";
       ctx.lineWidth = 2;
       ctx.beginPath();
-      // Top crease
       ctx.moveTo(pitchX - 10, h * 0.1);
       ctx.lineTo(pitchX + pitchW + 10, h * 0.1);
-      // Bottom crease
       ctx.moveTo(pitchX - 10, h * 0.9);
       ctx.lineTo(pitchX + pitchW + 10, h * 0.9);
       ctx.stroke();
     };
 
     const drawFastBowling = (ctx: CanvasRenderingContext2D, w: number, h: number, f: number) => {
-      const cycle = f % 60;
-      const progress = cycle / 60; // 0 to 1
+      const cycle = f % 90;
+      const progress = cycle / 90; 
       
       const startY = h * 0.1;
       const impactY = h * 0.6;
       const endY = h * 0.9;
       
-      const pitchW = w * 0.4;
       const startX = w / 2;
       const impactX = w / 2 + (Math.sin(f * 0.1) * 10);
       const endX = impactX + (impactX - startX) * 0.5;
@@ -70,17 +90,40 @@ export function PitchCanvas() {
         currentX = startX + (impactX - startX) * p;
         currentY = startY + (impactY - startY) * p;
       } else {
+        if (progress > 0.7 && progress < 0.72 && cycle === Math.floor(90 * 0.7)) {
+          // Generate sparks on impact
+          for (let i = 0; i < 10; i++) {
+            sparks.push({
+              x: impactX,
+              y: impactY,
+              vx: (Math.random() - 0.5) * 4,
+              vy: (Math.random() - 0.5) * 4 - 2,
+              life: 1.0
+            });
+          }
+        }
+
         const p = (progress - 0.7) / 0.3;
         currentX = impactX + (endX - impactX) * p;
         currentY = impactY + (endY - impactY) * p;
       }
 
-      ctx.fillStyle = "#EF4444"; // Ball color
+      // Draw sparks
+      for (let i = sparks.length - 1; i >= 0; i--) {
+        const s = sparks[i];
+        ctx.fillStyle = `rgba(245, 158, 11, ${s.life})`;
+        ctx.fillRect(s.x, s.y, 2, 2);
+        s.x += s.vx;
+        s.y += s.vy;
+        s.life -= 0.05;
+        if (s.life <= 0) sparks.splice(i, 1);
+      }
+
+      ctx.fillStyle = "#EF4444"; 
       ctx.beginPath();
       ctx.arc(currentX, currentY, 4, 0, Math.PI * 2);
       ctx.fill();
 
-      // Draw impact mark
       if (progress > 0.7) {
         ctx.fillStyle = "rgba(239, 68, 68, 0.3)";
         ctx.beginPath();
@@ -90,15 +133,25 @@ export function PitchCanvas() {
     };
 
     const drawCoverDrive = (ctx: CanvasRenderingContext2D, w: number, h: number, f: number) => {
-      const cycle = f % 80;
-      const progress = cycle / 80;
+      const cycle = f % 100;
+      const progress = cycle / 100;
 
       const impactX = w / 2 - 10;
       const impactY = h * 0.85;
 
-      // Draw bat swing
       if (progress < 0.2) {
-        ctx.strokeStyle = "#10B981";
+        soundPlayed = false;
+        // Ball coming in
+        const p = progress / 0.2;
+        const currentX = (w/2) + (impactX - w/2) * p;
+        const currentY = (h*0.1) + (impactY - h*0.1) * p;
+        
+        ctx.fillStyle = "#EF4444";
+        ctx.beginPath();
+        ctx.arc(currentX, currentY, 4, 0, Math.PI * 2);
+        ctx.fill();
+        
+        ctx.strokeStyle = "#ffffff";
         ctx.lineWidth = 4;
         ctx.beginPath();
         ctx.moveTo(impactX + 20, impactY - 20);
@@ -106,14 +159,18 @@ export function PitchCanvas() {
         ctx.stroke();
       }
 
-      if (progress > 0.2) {
+      if (progress >= 0.2) {
+        if (!soundPlayed) {
+          playBatSound();
+          soundPlayed = true;
+        }
+
         const p = (progress - 0.2) / 0.8;
         const currentX = impactX - (w * 0.4) * p;
         const currentY = impactY - (h * 0.6) * p;
 
-        // Trace path
-        ctx.strokeStyle = "rgba(16, 185, 129, 0.2)";
-        ctx.lineWidth = 2;
+        ctx.strokeStyle = "rgba(16, 185, 129, 0.6)";
+        ctx.lineWidth = 3;
         ctx.beginPath();
         ctx.moveTo(impactX, impactY);
         ctx.lineTo(currentX, currentY);
@@ -127,9 +184,8 @@ export function PitchCanvas() {
     };
 
     const drawHawkEye = (ctx: CanvasRenderingContext2D, w: number, h: number, f: number) => {
-      const cycle = f % 120;
-      const points = 5;
-      const progress = Math.min(1, cycle / 60);
+      const cycle = f % 150;
+      const progress = Math.min(1, cycle / 75);
       
       const startX = w / 2 + 15;
       const startY = h * 0.1;
@@ -138,9 +194,8 @@ export function PitchCanvas() {
       const endX = w / 2 - 25;
       const endY = h * 0.95;
 
-      ctx.strokeStyle = "rgba(6, 182, 212, 0.4)";
+      ctx.strokeStyle = "rgba(6, 182, 212, 0.6)";
       ctx.lineWidth = 2;
-      ctx.setLineDash([4, 4]);
       
       ctx.beginPath();
       ctx.moveTo(startX, startY);
@@ -149,24 +204,37 @@ export function PitchCanvas() {
       const currentImpactY = startY + (impactY - startY) * progress;
       ctx.lineTo(currentImpactX, currentImpactY);
       
-      if (cycle > 60) {
-        const postProgress = (cycle - 60) / 60;
+      if (cycle > 75) {
+        const postProgress = (cycle - 75) / 75;
         const currentEndX = impactX + (endX - impactX) * postProgress;
         const currentEndY = impactY + (endY - impactY) * postProgress;
         ctx.lineTo(currentEndX, currentEndY);
       }
       ctx.stroke();
-      ctx.setLineDash([]);
 
-      // Draw heatmap impact zone
-      if (cycle > 60) {
-        const grad = ctx.createRadialGradient(impactX, impactY, 0, impactX, impactY, 20);
+      // Nodes
+      ctx.fillStyle = "#06B6D4";
+      ctx.beginPath(); ctx.arc(startX, startY, 4, 0, Math.PI * 2); ctx.fill();
+      if (cycle > 75) {
+        ctx.beginPath(); ctx.arc(impactX, impactY, 4, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(endX, endY, 4, 0, Math.PI * 2); ctx.fill();
+      }
+
+      // Heatmap impact zone
+      if (cycle > 75) {
+        const grad = ctx.createRadialGradient(impactX, impactY, 0, impactX, impactY, 25);
         grad.addColorStop(0, "rgba(239, 68, 68, 0.6)");
+        grad.addColorStop(0.5, "rgba(245, 158, 11, 0.4)");
         grad.addColorStop(1, "rgba(239, 68, 68, 0)");
         ctx.fillStyle = grad;
         ctx.beginPath();
-        ctx.arc(impactX, impactY, 20, 0, Math.PI * 2);
+        ctx.arc(impactX, impactY, 25, 0, Math.PI * 2);
         ctx.fill();
+
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "10px monospace";
+        ctx.fillText(`PITCH: (${Math.round(impactX)}, ${Math.round(impactY)})`, impactX + 15, impactY);
+        ctx.fillText(`IMPACT: IN LINE`, impactX + 15, impactY + 12);
       }
     };
 
@@ -191,7 +259,7 @@ export function PitchCanvas() {
   }, [mode]);
 
   return (
-    <div className="w-full h-full flex flex-col bg-[#05070B] border border-white/10 rounded-xl overflow-hidden shadow-2xl relative">
+    <div className="w-full h-full flex flex-col bg-[#05070B] border border-white/10 rounded-xl overflow-hidden shadow-2xl relative" id="pitch-canvas">
       <div className="flex items-center justify-between border-b border-white/10 bg-white/5 px-4 py-2 font-mono text-[10px] uppercase tracking-wider text-muted-foreground z-10">
         <div className="flex items-center gap-2">
           <span className="h-1.5 w-1.5 rounded-full bg-[#EF4444] animate-pulse"></span>
