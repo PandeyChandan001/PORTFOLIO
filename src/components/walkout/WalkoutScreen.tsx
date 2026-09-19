@@ -222,44 +222,60 @@ export function WalkoutScreen() {
           </div>
 
           {/* Center Walkout Card */}
-          <div className="relative z-40 flex flex-col items-center w-full max-w-2xl px-4">
-            <div className="w-full bg-[#0B0E14]/85 border border-emerald-500/40 rounded-2xl p-6 md:p-8 backdrop-blur-xl shadow-[0_0_40px_rgba(16,185,129,0.15)] text-center relative overflow-hidden">
-              {/* Top Badge */}
-              <div className="text-center mb-3">
-                <h2 className="font-mono text-xl md:text-2xl font-black tracking-[0.3em] text-emerald-400 uppercase drop-shadow-[0_0_15px_rgba(16,185,129,0.6)]">
-                  NEXT BATTER TO THE CREASE
-                </h2>
-              </div>
-
-              {/* Player Name */}
-              <h1 className="font-mono text-3xl md:text-5xl font-black tracking-tight text-white uppercase mb-2">
-                CHANDAN PANDEY
-              </h1>
-
-              {/* Role */}
-              <div className="font-mono text-xs md:text-sm font-semibold tracking-wider text-emerald-300/90 mb-6 uppercase">
-                All-Rounder in Java, C++, part-time Python, SQL, AI tools
-              </div>
-
-              {/* Technical Intro */}
-              <p className="font-sans text-sm md:text-base text-slate-300 font-medium leading-relaxed max-w-xl mx-auto mb-8">
-                "Taking guard with disciplined OOP architecture in Java and low-level thread synchronization in C++. Driving full-stack deliveries through typed TypeScript pipelines, backed by Python scripts and vector AI embeddings for Hawk-Eye precision. Grounded in ACID-compliant SQL scorekeeping and reliable network handshakes—playing every technical delivery on merit."
-              </p>
-
-              {/* Action Button */}
-              <button 
-                onClick={handleTakeGuard}
-                className="bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold text-base tracking-wider py-3.5 px-8 rounded-xl shadow-lg shadow-emerald-500/30 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-3 mx-auto uppercase"
-              >
-                <span>🏏 TAKE GUARD & WALK OUT</span>
-              </button>
+          <div className="relative z-40 flex flex-col items-center w-full max-w-4xl px-4">
+            <div className="w-full bg-[#0B0E14]/85 border border-emerald-500/40 rounded-3xl p-6 md:p-10 backdrop-blur-xl shadow-[0_0_40px_rgba(16,185,129,0.15)] relative overflow-hidden flex flex-col md:flex-row items-center gap-8 md:gap-12">
               
-              <button 
-                onClick={handleSkip}
-                className="mt-5 text-[11px] text-white/40 hover:text-white transition-colors underline underline-offset-4 font-mono"
-              >
-                [ Skip walkout & view scorecard directly (Muted) ]
-              </button>
+              {/* Photo Cutout */}
+              <div className="relative w-48 h-48 md:w-72 md:h-72 shrink-0 rounded-2xl overflow-hidden border border-emerald-500/30 shadow-[0_0_30px_rgba(16,185,129,0.2)] bg-black">
+                <div className="absolute inset-0 bg-emerald-500/20 mix-blend-overlay z-10 pointer-events-none" />
+                <img 
+                  src="/chandan-walkout.jpg" 
+                  alt="Chandan Pandey" 
+                  className="w-full h-full object-cover object-top grayscale contrast-125 brightness-90"
+                />
+              </div>
+
+              {/* Dossier Content */}
+              <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
+                {/* Top Badge */}
+                <div className="mb-3">
+                  <h2 className="font-mono text-xl md:text-2xl font-black tracking-[0.3em] text-emerald-400 uppercase drop-shadow-[0_0_15px_rgba(16,185,129,0.6)]">
+                    NEXT BATTER TO THE CREASE
+                  </h2>
+                </div>
+
+                {/* Player Name */}
+                <h1 className="font-mono text-3xl md:text-5xl font-black tracking-tight text-white uppercase mb-2">
+                  CHANDAN PANDEY
+                </h1>
+
+                {/* Role */}
+                <div className="font-mono text-xs md:text-sm font-semibold tracking-wider text-emerald-300/90 mb-6 uppercase">
+                  All-Rounder in Java, C++, part-time Python, SQL, AI tools
+                </div>
+
+                {/* Technical Intro */}
+                <p className="font-sans text-sm md:text-base text-slate-300 font-medium leading-relaxed max-w-xl mb-8">
+                  "Taking guard with disciplined OOP architecture in Java and low-level thread synchronization in C++. Driving full-stack deliveries through typed TypeScript pipelines, backed by Python scripts and vector AI embeddings for Hawk-Eye precision. Grounded in ACID-compliant SQL scorekeeping and reliable network handshakes—playing every technical delivery on merit."
+                </p>
+
+                {/* Action Button */}
+                <div className="flex flex-col items-center md:items-start w-full">
+                  <button 
+                    onClick={handleTakeGuard}
+                    className="bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold text-base tracking-wider py-3.5 px-8 rounded-xl shadow-lg shadow-emerald-500/30 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-3 uppercase w-full sm:w-auto"
+                  >
+                    <span>🏏 TAKE GUARD & WALK OUT</span>
+                  </button>
+                  
+                  <button 
+                    onClick={handleSkip}
+                    className="mt-5 text-[11px] text-white/40 hover:text-white transition-colors underline underline-offset-4 font-mono"
+                  >
+                    [ Skip walkout & view scorecard directly (Muted) ]
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>
