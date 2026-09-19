@@ -36,13 +36,6 @@ export function TelemetryHUD() {
       </div>
 
       <div className="flex items-center gap-4">
-        <button
-          onClick={() => window.dispatchEvent(new Event("replay-walkout"))}
-          className="hover:text-emerald-400 transition-colors bg-white/5 px-2.5 py-1 rounded text-[10px] font-bold tracking-widest text-white/70"
-          title="Return to Pavilion (Walkout Screen)"
-        >
-          [ REPLAY WALKOUT ]
-        </button>
         <div className="font-mono hidden sm:block">{time}</div>
         <button 
           onClick={() => setMuted(!muted)}

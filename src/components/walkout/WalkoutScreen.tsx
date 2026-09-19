@@ -9,18 +9,20 @@ export function WalkoutScreen() {
 
   useEffect(() => {
     setHydrated(true);
-    const hasWalkedOut = sessionStorage.getItem("hasWalkedOut");
-    if (hasWalkedOut) {
-      setShow(false);
-    }
 
-    const handleReplay = () => {
-      sessionStorage.removeItem("hasWalkedOut");
-      setShow(true);
+    const checkHash = () => {
+      if (window.location.hash === '#deck') {
+        setShow(false);
+      } else {
+        setShow(true);
+      }
     };
 
-    window.addEventListener("replay-walkout", handleReplay);
-    return () => window.removeEventListener("replay-walkout", handleReplay);
+    // Check initial state on mount
+    checkHash();
+
+    window.addEventListener('hashchange', checkHash);
+    return () => window.removeEventListener('hashchange', checkHash);
   }, []);
 
   const playCinematicStadiumIntro = () => {
@@ -148,15 +150,11 @@ export function WalkoutScreen() {
 
   const handleTakeGuard = () => {
     playCinematicStadiumIntro();
-    sessionStorage.setItem("hasWalkedOut", "true");
-    setTimeout(() => {
-      setShow(false);
-    }, 50); // Slight delay to ensure state triggers render cycle properly
+    window.location.hash = '#deck';
   };
 
   const handleSkip = () => {
-    sessionStorage.setItem("hasWalkedOut", "true");
-    setShow(false);
+    window.location.hash = '#deck';
   };
 
   if (!hydrated) return null;
