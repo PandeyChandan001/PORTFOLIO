@@ -4,7 +4,7 @@ export const profile = {
   debut: "Methodist High School, Kanpur",
   homeGround: "Manipal University Jaipur",
   innings: "B.Tech CSE (IoT & Intelligent Systems) — 5th Semester",
-  status: "🟢 Match-Fit // Available for SDE & AI Internships",
+  status: "🟢 Match-Fit // Available for Software Engineer Intern Roles",
   bio: "Taking guard at the 22-yard crease of computer science. When the pitch offers green-top seam movement, I bowl tight 140+ km/h spells in C++ and Java—managing raw memory, locking down race conditions, and designing cache eviction heuristics under heavy load. When stepping out to bat, I punch through covers with clean Next.js architectures, Zod-guarded pipelines, and applied AI models. Whether it is grinding out high-pressure algorithmic spells or reviewing code with Hawk-Eye precision, I play every delivery on merit.",
 };
 
