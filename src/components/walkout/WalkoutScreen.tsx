@@ -153,10 +153,6 @@ export function WalkoutScreen() {
     window.location.hash = '#deck';
   };
 
-  const handleSkip = () => {
-    window.location.hash = '#deck';
-  };
-
   if (!hydrated) return null;
 
   return (
@@ -275,13 +271,6 @@ export function WalkoutScreen() {
                     className="bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold text-base tracking-wider py-3.5 px-8 rounded-xl shadow-lg shadow-emerald-500/30 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-3 uppercase w-full sm:w-auto"
                   >
                     <span>🏏 INSPECT THE OFFICIAL CAREER RECORD</span>
-                  </button>
-                  
-                  <button 
-                    onClick={handleSkip}
-                    className="mt-5 text-[11px] text-white/40 hover:text-white transition-colors underline underline-offset-4 font-mono"
-                  >
-                    [ Skip walkout & view scorecard directly (Muted) ]
                   </button>
                 </div>
               </div>
