@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/cn";
+import { CommandPalette } from "@/components/nav/CommandPalette";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,6 +25,7 @@ export default function RootLayout({
         <div className="relative flex min-h-screen flex-col">
           <main className="flex-1">{children}</main>
         </div>
+        <CommandPalette />
       </body>
     </html>
   );
