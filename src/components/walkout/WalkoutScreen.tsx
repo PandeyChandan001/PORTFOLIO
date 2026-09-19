@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { HeaderBanner } from "@/components/nav/HeaderBanner";
 
 export function WalkoutScreen() {
   const [show, setShow] = useState(true);
@@ -158,7 +157,7 @@ export function WalkoutScreen() {
     <AnimatePresence>
       {show && (
         <motion.div 
-          className="fixed inset-0 z-[100] w-screen h-screen flex flex-col justify-between p-6 md:p-10 select-none overflow-hidden text-white"
+          className="fixed inset-0 z-[100] w-screen h-screen flex items-center justify-center p-4 md:p-8 select-none overflow-hidden bg-black/60 text-white"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 1.15, filter: "blur(10px)" }}
           transition={{ duration: 0.7, ease: "easeInOut" }}
@@ -170,43 +169,19 @@ export function WalkoutScreen() {
           />
           <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.85) 100%)' }} />
 
-          {/* Full Broadcast HUD Container */}
-          <div className="relative z-10 w-full h-full flex flex-col justify-between pointer-events-auto">
-            
-            <HeaderBanner />
-
-            {/* Top Row (Match & Broadcast Telemetry) */}
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 font-mono mt-4">
-              <div className="space-y-1">
-                <div className="font-bold text-[#10B981] tracking-widest uppercase">🏏 FIXTURE: SDE & APPLIED AI RECRUITMENT 2027</div>
-                <div className="text-[10px] sm:text-xs text-white/70 uppercase">VENUE: MANIPAL UNIVERSITY JAIPUR // DEBUT: METHODIST HIGH SCHOOL, KANPUR</div>
-              </div>
-              
-              <div className="flex flex-col items-end gap-1 text-right">
-                <div className="flex items-center gap-2 bg-black/40 px-3 py-1.5 rounded-full border border-white/10 backdrop-blur-sm">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#10B981] opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#10B981]"></span>
-                  </span>
-                  <span className="text-xs font-bold uppercase tracking-wider text-white">LIVE TELEMETRY</span>
-                </div>
-                <div className="text-[9px] sm:text-[10px] text-white/50 uppercase">AUDIO: 3D STADIUM SUB-WOOFER // READY FOR WALKOUT</div>
-              </div>
+          {/* Center Walkout Card Only */}
+          <div className="relative z-10 flex flex-col items-center w-full max-w-2xl">
+            <div className="text-center mb-3 md:mb-4">
+              <h2 className="font-mono text-xl md:text-2xl font-black tracking-[0.3em] text-emerald-400 uppercase drop-shadow-[0_0_15px_rgba(16,185,129,0.6)]">
+                NEXT BATTER TO THE CREASE
+              </h2>
             </div>
-
-            {/* Center Stage: Batter Walkout Dossier Card */}
-            <div className="flex flex-col items-center w-full">
-              <div className="text-center mb-3 md:mb-4">
-                <h2 className="font-mono text-xl md:text-2xl font-black tracking-[0.3em] text-emerald-400 uppercase drop-shadow-[0_0_15px_rgba(16,185,129,0.6)]">
-                  NEXT BATTER TO THE CREASE
-                </h2>
-              </div>
-              <div className="max-w-2xl mx-auto w-full bg-black/75 backdrop-blur-xl border border-[#10B981]/40 rounded-2xl p-6 md:p-8 shadow-[0_0_50px_rgba(16,185,129,0.15)] text-center relative overflow-hidden flex flex-col items-center">
-                <h1 className="text-3xl md:text-5xl font-black text-white mb-3 uppercase tracking-tight font-sans">
-                  CHANDAN PANDEY
-                </h1>
-                
-                <div className="bg-[#10B981]/10 border border-[#10B981]/20 px-4 py-1.5 rounded-full font-mono text-[10px] sm:text-xs text-[#06B6D4] uppercase tracking-wider mb-6">
+            <div className="w-full bg-black/75 backdrop-blur-xl border border-[#10B981]/40 rounded-2xl p-6 md:p-8 shadow-[0_0_50px_rgba(16,185,129,0.15)] text-center relative overflow-hidden flex flex-col items-center">
+              <h1 className="text-3xl md:text-5xl font-black text-white mb-3 uppercase tracking-tight font-sans">
+                CHANDAN PANDEY
+              </h1>
+              
+              <div className="bg-[#10B981]/10 border border-[#10B981]/20 px-4 py-1.5 rounded-full font-mono text-[10px] sm:text-xs text-[#06B6D4] uppercase tracking-wider mb-6">
                 All-Rounder in Java, C++, part-time Python, SQL, AI tools
               </div>
               
@@ -228,35 +203,6 @@ export function WalkoutScreen() {
                 [ Skip walkout & view scorecard directly (Muted) ]
               </button>
             </div>
-            </div>
-
-            {/* Bottom Row (Dugout Strategy & Playing XI Lineup) */}
-            <div className="flex flex-col md:flex-row items-end justify-between gap-8 pt-8">
-              {/* Bottom-Left */}
-              <div className="max-w-sm">
-                <div className="text-[#10B981] font-mono text-xs font-bold uppercase tracking-wider mb-2">
-                  PITCH REPORT & STRATEGY
-                </div>
-                <div className="text-xs text-white/70 leading-relaxed font-sans">
-                  Hard turf with true bounce. Low-latency C++ cache algorithms handle the pace; Zod-validated AI pipelines anchor the middle order.
-                </div>
-              </div>
-              
-              {/* Bottom-Right */}
-              <div className="text-right">
-                <div className="text-[#10B981] font-mono text-xs font-bold uppercase tracking-wider mb-2">
-                  SQUAD ATTACK
-                </div>
-                <ul className="text-[9px] sm:text-[10px] text-white/60 font-mono space-y-1.5 uppercase text-left inline-block">
-                  <li><span className="text-white/40">01.</span> JAVA & OOP (ANCHOR)</li>
-                  <li><span className="text-white/40">02.</span> C++ & CONCURRENCY (EXPRESS PACE)</li>
-                  <li><span className="text-white/40">03.</span> NEXT.JS & TYPESCRIPT (STROKEPLAY)</li>
-                  <li><span className="text-white/40">04.</span> APPLIED AI & RAG (HAWK-EYE DRS)</li>
-                  <li><span className="text-white/40">05.</span> SQL & DBMS (SCOREBOOK INTEGRITY)</li>
-                </ul>
-              </div>
-            </div>
-
           </div>
         </motion.div>
       )}
