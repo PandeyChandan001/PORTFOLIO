@@ -3,22 +3,28 @@
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-emerald-neon: #10B981;
+  --color-cyan-electric: #06B6D4;
 }
 
 @layer base {
   :root {
-    --background: #000000;
+    --background: #08090C;
     --foreground: #ffffff;
-    --muted: #111111;
+    --card: #0F1117;
+    --card-foreground: #ffffff;
+    --muted: #1A1D24;
     --muted-foreground: #888888;
-    --border: #222222;
-    --accent: #222222;
-    --accent-foreground: #ffffff;
+    --border: rgba(255, 255, 255, 0.1);
+    --accent: #10B981;
+    --accent-foreground: #000000;
   }
 }
 
@@ -28,6 +34,9 @@
   }
   body {
     @apply bg-background text-foreground antialiased selection:bg-accent selection:text-accent-foreground;
+    background-image: linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
   }
 }
 

@@ -3,6 +3,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/cn";
 import { CommandPalette } from "@/components/nav/CommandPalette";
+import { TelemetryHUD } from "@/components/nav/TelemetryHUD";
+import { FooterDock } from "@/components/nav/FooterDock";
+import { profile } from "@/data/content";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -10,8 +13,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Software Engineer",
-  description: "Portfolio and command center",
+  title: `${profile.name} - ${profile.positioning}`,
+  description: profile.bio,
 };
 
 export default function RootLayout({
@@ -20,12 +23,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark scroll-smooth">
       <body className={cn(inter.variable, "font-sans min-h-screen bg-background")}>
         <div className="relative flex min-h-screen flex-col">
+          <TelemetryHUD />
           <main className="flex-1">{children}</main>
         </div>
         <CommandPalette />
+        <FooterDock />
       </body>
     </html>
   );

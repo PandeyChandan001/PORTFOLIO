@@ -1,35 +1,45 @@
-import { CanvasMesh } from "./CanvasMesh";
+"use client";
+
+import { useState } from "react";
+import { profile } from "@/data/content";
+import { HeroTelemetryWidget } from "./HeroTelemetryWidget";
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-[80vh] w-full items-center justify-center overflow-hidden border-b">
-      <CanvasMesh />
-      
-      <div className="z-10 grid w-full max-w-6xl grid-cols-1 gap-8 px-6 md:grid-cols-2">
-        <div className="flex flex-col justify-center space-y-6">
-          <h1 className="text-5xl font-bold tracking-tight sm:text-6xl text-foreground">
-            Systems & <br />
-            Interfaces
-          </h1>
-          <p className="max-w-md text-lg text-muted-foreground">
-            Specializing in high-performance web architecture, distributed systems, and tactile user experiences.
-          </p>
+    <section className="relative w-full min-h-[85vh] flex items-center justify-center border-b border-white/10 overflow-hidden px-4 sm:px-6 lg:px-8 py-20">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 relative z-10 w-full">
+        {/* Left Column */}
+        <div className="flex flex-col justify-center space-y-8">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#10B981]/30 bg-[#10B981]/10 px-3 py-1 text-xs font-mono text-[#10B981] w-fit">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#10B981]" />
+            {profile.status}
+          </div>
+          
+          <div className="space-y-4">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.1]">
+              {profile.headline}
+            </h1>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
+              {profile.bio}
+            </p>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-4 pt-4">
+            <button 
+              onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
+              className="rounded-md bg-foreground text-background px-6 py-3 text-sm font-semibold transition-transform hover:scale-[1.02] active:scale-95"
+            >
+              [Inspect Projects]
+            </button>
+            <button className="rounded-md border border-white/10 bg-card px-6 py-3 text-sm font-semibold transition-colors hover:bg-muted text-foreground">
+              [Quick Resume / Terminal View]
+            </button>
+          </div>
         </div>
         
-        <div className="flex items-center justify-center md:justify-end">
-          <div className="w-full max-w-sm rounded-lg border bg-muted/50 p-6 backdrop-blur-sm">
-            <div className="mb-4 flex items-center space-x-2 border-b pb-4">
-              <div className="h-3 w-3 rounded-full bg-red-500/80" />
-              <div className="h-3 w-3 rounded-full bg-yellow-500/80" />
-              <div className="h-3 w-3 rounded-full bg-green-500/80" />
-              <span className="ml-2 text-xs text-muted-foreground font-mono">command-center</span>
-            </div>
-            <div className="space-y-2 font-mono text-sm text-muted-foreground">
-              <p><span className="text-accent-foreground">~</span> $ init_sequence</p>
-              <p>Loading dependencies...</p>
-              <p className="animate-pulse">_</p>
-            </div>
-          </div>
+        {/* Right Column */}
+        <div className="flex items-center justify-center lg:justify-end w-full">
+          <HeroTelemetryWidget />
         </div>
       </div>
     </section>
