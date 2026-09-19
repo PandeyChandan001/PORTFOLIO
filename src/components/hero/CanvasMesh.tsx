@@ -6,6 +6,9 @@ export function CanvasMesh() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -14,6 +17,7 @@ export function CanvasMesh() {
 
     let animationFrameId: number;
     let mouse = { x: 0, y: 0 };
+    let isThrottled = false;
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -21,14 +25,18 @@ export function CanvasMesh() {
     };
 
     const handleMouseMove = (e: MouseEvent) => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
+      if (isThrottled) return;
+      isThrottled = true;
+      requestAnimationFrame(() => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+        isThrottled = false;
+      });
     };
 
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Simple particle/mesh effect centered around cursor
       ctx.fillStyle = "rgba(255, 255, 255, 0.05)";
       ctx.beginPath();
       ctx.arc(mouse.x, mouse.y, 100, 0, Math.PI * 2);
@@ -38,7 +46,7 @@ export function CanvasMesh() {
     };
 
     window.addEventListener("resize", resize);
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
     
     resize();
     draw();
