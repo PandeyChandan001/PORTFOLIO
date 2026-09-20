@@ -49,10 +49,13 @@ export function CommandPalette() {
             <div className="space-y-1">
               <div className="px-2 py-1.5 text-xs font-medium text-muted-foreground">Quick Actions</div>
               <button 
-                onClick={() => setIsOpen(false)}
+                onClick={() => {
+                  window.location.href = "mailto:chandanpandey000001@gmail.com";
+                  setIsOpen(false);
+                }}
                 className="w-full flex items-center rounded-md px-2 py-2 text-sm text-foreground hover:bg-muted/50 text-left"
               >
-                Copy Email Address
+                Send Email
               </button>
             </div>
           )}
